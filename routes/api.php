@@ -26,3 +26,4 @@ Route::post('/logout', [LoginController::class,'loggedOut'] );
 Route::post('/addslot', [AdminController::class,'Doctorslotadd'] );
 // all Dector
 Route::get( '/alldoctor', [AdminController::class,'Alldoctor']);
+Route::get( '/singledoctorallslot/{userId}', [AdminController::class,'Singledoctorallslot']);

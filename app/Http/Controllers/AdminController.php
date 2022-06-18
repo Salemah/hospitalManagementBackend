@@ -55,13 +55,18 @@ class AdminController extends Controller
                     'validation_errors' => $validator->errors()
                 ]);
             }
-            
-
-
-
-
-
-
+            }
+    }
+    public function Singledoctorallslot(Request $req)
+    {
+        //return Appointments::all();
+        // return Doctrslot::all();
+        $user = Doctrslot::where('userId', $req->userId)->get();
+        if ($user) {
+            return response()->json($user, 200);
         }
+        // $st = Doctrslot::where('userId', $req->userId)->get();
+
+        // return response()->json($st, 200);
     }
 }
