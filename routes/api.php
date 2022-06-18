@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrationController;
 use Illuminate\Http\Request;
@@ -21,6 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post( '/registration', [RegistrationController::class,'registersubmit'] );
 Route::post('/login', [LoginController::class,'verify'] );
-
-
 Route::post('/logout', [LoginController::class,'loggedOut'] );
+Route::post('/addslot', [AdminController::class,'Doctorslotadd'] );
+// all Dector
+Route::get( '/alldoctor', [AdminController::class,'Alldoctor']);
