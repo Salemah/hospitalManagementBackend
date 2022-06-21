@@ -95,7 +95,7 @@ class RegistrationController extends Controller
                 $doctor->userId = $user->id;
                 $doctor->email = $req->email;
                 $doctor->phone = $req->phone;
-                $doctor->department = "medicine";
+                $doctor->department = $req->department;
 
                 $doctor->save();
 

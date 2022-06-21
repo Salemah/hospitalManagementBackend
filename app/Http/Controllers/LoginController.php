@@ -74,6 +74,7 @@ class LoginController extends Controller
                         'email' => $user->email,
                         'userId' =>  $patient->userId,
                         'usertype' => $user->usertype,
+                        'phone' => $user->phone,
 
 
 

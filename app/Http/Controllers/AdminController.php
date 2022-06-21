@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Doctor;
+use App\Models\User;
+use App\Models\Appointment;
 use App\Models\Doctrslot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -12,8 +14,30 @@ class AdminController extends Controller
     public function AllDoctor(Request $req)
 
     {
+      return Doctor::all();
+    }
+    public function AllUser(Request $req)
 
-        return Doctor::all();
+    {
+      return User::all();
+    }
+    public function Allappointment(Request $req)
+
+    {
+
+        return Appointment::all();
+    }
+    public function DeleteAppointment(Request $req)
+    {
+
+        $appointment = Appointment::where('id', $req->id)->first();
+        if ($appointment->delete()) {
+            return response()->json(["success" => " Appointment Delete Succesfull"], 200);
+        } else {
+            return response()->json(["msg" => "notfound"], 404);
+        }
+
+
     }
     public function Doctorslotadd(Request $req)
     {
@@ -59,14 +83,31 @@ class AdminController extends Controller
     }
     public function Singledoctorallslot(Request $req)
     {
-        //return Appointments::all();
-        // return Doctrslot::all();
+
         $user = Doctrslot::where('userId', $req->userId)->get();
         if ($user) {
             return response()->json($user, 200);
         }
-        // $st = Doctrslot::where('userId', $req->userId)->get();
 
-        // return response()->json($st, 200);
+    }
+    public function Deletedoctorallslot(Request $req)
+    {
+
+        $slot = Doctrslot::where('userId', $req->userId)->first();
+        if ($slot->delete()) {
+            return response()->json(["success" => " Slot Delete Succesfull"], 200);
+        } else {
+            return response()->json(["msg" => "notfound"], 404);
+        }
+
+
+    }
+    public function PatientApointmentDetails(Request $req)
+    {
+
+        $patientallappointment= Appointment::where('patientId', $req->id)->get();
+        return response()->json($patientallappointment, 200);
+
+
     }
 }
