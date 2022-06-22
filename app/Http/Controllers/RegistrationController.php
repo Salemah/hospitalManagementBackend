@@ -96,6 +96,10 @@ class RegistrationController extends Controller
                 $doctor->email = $req->email;
                 $doctor->phone = $req->phone;
                 $doctor->department = $req->department;
+                $filename =time().'.'.$req->image->extension();
+                 $req->image->move(public_path('images'), $filename);
+                $path="$filename";
+                $doctor->image = $path;
 
                 $doctor->save();
 
