@@ -27,10 +27,13 @@ Route::post('/logout', [LoginController::class,'loggedOut'] );
 Route::post('/addslot', [AdminController::class,'Doctorslotadd'] );
 // all Dector
 Route::get('/alluser', [AdminController::class,'AllUser']);
+Route::get('/allpatient', [AdminController::class,'Allpatient']);
 Route::get('/allappointment', [AdminController::class,'Allappointment']);
 Route::get('/patientapointmentdetails/{id}', [AdminController::class,'PatientApointmentDetails']);
 Route::get( '/alldoctor', [AdminController::class,'Alldoctor']);
 Route::post( '/admin/appoinemtntdelete/{id}', [AdminController::class,'DeleteAppointment']);
+Route::post( '/deletePatient/{id}', [AdminController::class,'DeletePatient']);
+Route::post( '/deleteDoctor/{id}', [AdminController::class,'DeleteDoctor']);
 // Doctor slot
 Route::get( '/singledoctorallslot/{userId}', [AdminController::class,'Singledoctorallslot']);
 //delete slot

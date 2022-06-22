@@ -6,6 +6,7 @@ use App\Models\Doctor;
 use App\Models\User;
 use App\Models\Appointment;
 use App\Models\Doctrslot;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -20,6 +21,11 @@ class AdminController extends Controller
 
     {
       return User::all();
+    }
+    public function Allpatient(Request $req)
+
+    {
+      return Patient::all();
     }
     public function Allappointment(Request $req)
 
@@ -107,6 +113,31 @@ class AdminController extends Controller
 
         $patientallappointment= Appointment::where('patientId', $req->id)->get();
         return response()->json($patientallappointment, 200);
+
+
+    }
+    public function DeletePatient(Request $req)
+    {
+
+        $user = User::where('id', $req->id)->first();
+        if ($user->delete()) {
+            // $patient = Patient::where('id', $req->id)->first();
+            return response()->json(["success" => " user Delete Succesfull"], 200);
+        } else {
+            return response()->json(["msg" => "notfound"], 404);
+        }
+
+
+    }
+    public function DeleteDoctor(Request $req)
+    {
+
+        $user = User::where('id', $req->id)->first();
+        if ($user->delete()) {
+            return response()->json(["success" => " Doctor Delete Succesfull"], 200);
+        } else {
+            return response()->json(["msg" => "notfound"], 404);
+        }
 
 
     }
