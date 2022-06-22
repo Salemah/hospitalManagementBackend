@@ -54,6 +54,7 @@ class PatientController extends Controller
             $aptt->phone = $req->phone;
             $aptt->time = $req->time;
             $aptt->day = $req->day;
+            $aptt->status = "pending";
 
             if ($aptt->save()) {
                 return response()->json([

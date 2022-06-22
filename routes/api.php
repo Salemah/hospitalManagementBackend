@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\RegistrationController;
@@ -47,4 +48,9 @@ Route::post( '/appointmentsubmit', [PatientController::class,'PatientAppointment
 Route::get('/patient/myappointment/{id}', [PatientController::class,'Myappointment']);
 
 Route::post( '/patient/appointment/delete/{id}', [PatientController::class,'PatientAppointmentDelete'] );
+//Doctor Api
+Route::get('/doctor/myappointment/{id}', [DoctorController::class,'Myappointment']);
+Route::post('/doctor/myappointment/update/{id}', [DoctorController::class,'UpdateStatus']);
+Route::get( '/doctorProfile/{id}', [DoctorController::class,'DoctorProfile'] );
+Route::post( '/doctoreditProfile', [DoctorController::class,'DoctoreditProfile'] );
 
